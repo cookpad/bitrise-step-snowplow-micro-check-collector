@@ -29,12 +29,12 @@ then
   exit 1
 elif [[ $bad == "0" ]]
 then
+  echo "Snowplow test was successfully. :tada"
+else
   echo "Failing step because Snowplow reports more than zero bad events ($bad)"
   
   # Export the bad json into a file
   curl --silent "${CP_BITRISE_SNOWPLOW_MICRO_COLLECTOR_URL}/micro/bad" | json_pp >> $BITRISE_DEPLOY_DIR/snowplow_bad.json
 
   exit 1
-else
-  echo "Snowplow test was succesful. :tada"
 fi
