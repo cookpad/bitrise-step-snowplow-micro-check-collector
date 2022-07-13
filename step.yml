@@ -64,7 +64,7 @@ toolkit:
 
 
 inputs:
-  - collector_url: http://${SNOWPLOW_MICRO_COLLECTOR_INTERFACE}:${SNOWPLOW_MICRO_COLLECTOR_PORT}
+  - collector_url: ${BITRISE_SNOWPLOW_COLLECTOR_URL}
     opts:
       title: "Collector URL"
       summary: The URL to the Snowplow Micro Collector instance
@@ -72,11 +72,15 @@ inputs:
       is_required: true
 
 outputs:
-  - EXAMPLE_STEP_OUTPUT:
+  - SNOWPLOW_MICRO_COLLECTOR_RESULTS_TOTAL:
     opts:
-      title: "Example Step Output"
-      summary: Summary. No more than 2-3 sentences.
-      description: |
-        Description of this output.
-
-        Can be Markdown formatted text.
+      title: "Total events count"
+      summary: Snowplow collector has received this amount of total events
+  - SNOWPLOW_MICRO_COLLECTOR_RESULTS_BAD:
+    opts:
+      title: "Bad events count"
+      summary: Snowplow collector has invalidated this amount of bad events
+  - SNOWPLOW_MICRO_COLLECTOR_RESULTS_GOOD:
+    opts:
+      title: "Good events count"
+      summary: Snowplow collector has validated this amount of good events
