@@ -17,7 +17,7 @@ envman add --key SNOWPLOW_MICRO_COLLECTOR_RESULTS_BAD --value "$bad"
 
 # TODO: In the future
 # We need to do bad events parsing according to https://docs.snowplowanalytics.com/docs/managing-data-quality/testing-and-qa-workflows/set-up-automated-testing-with-snowplow-micro/#micro-bad
-# Then create a junit report file that lists each issue as a failure, write it to $BITRISE_TEST_RESULT_DIRCreate a junit report file that lists each issue as a failure, write it to $BITRISE_TEST_RESULT_DIR
+# Then create a junit report file that lists each issue as a failure, write it to $BITRISE_TEST_RESULT_DIR
 # It will be sharable script codes among other clients like `Android` and `Web`
 
 if [[ $total -eq 0 ]]
