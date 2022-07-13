@@ -1,10 +1,8 @@
 #!/bin/bash
 set -e
 
-echo "Checking status of collector at ${CP_BITRISE_SNOWPLOW_MICRO_COLLECTOR_URL}/micro/all"
-result=$(curl --silent "${CP_BITRISE_SNOWPLOW_MICRO_COLLECTOR_URL}/micro/all")
-
-echo result
+echo "Checking status of collector at $collector_url..."
+result=$(curl --silent "$collector_url/micro/all")
 
 # Parse the results
 total=$(jq -r '.total' <<< "$result")
@@ -22,14 +20,13 @@ envman add --key SNOWPLOW_MICRO_COLLECTOR_RESULTS_BAD --value "$bad"
 # Then create a junit report file that lists each issue as a failure, write it to $BITRISE_TEST_RESULT_DIRCreate a junit report file that lists each issue as a failure, write it to $BITRISE_TEST_RESULT_DIR
 # It will be sharable script codes among other clients like `Android` and `Web`
 
-# Fail if bad is != 0
-if [[ $total == "0" ]]
+if [[ $total -eq 0 ]]
 then
   echo "There are no events posted to Snowplow Micro, text failed."
   exit 1
-elif [[ $bad == "0" ]]
+elif [[ $bad -eq 0 ]]
 then
-  echo "Snowplow test was successfully. :tada"
+  echo "Snowplow test was successful 🎉"
 else
   echo "Failing step because Snowplow reports more than zero bad events ($bad)"
   
