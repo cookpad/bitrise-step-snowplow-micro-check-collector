@@ -64,7 +64,6 @@ toolkit:
 
 
 inputs:
-  - inputs:
   - collector_url: ${BITRISE_SNOWPLOW_COLLECTOR_URL}
     opts:
       title: "Collector URL"
