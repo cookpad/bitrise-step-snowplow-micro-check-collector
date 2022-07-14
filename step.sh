@@ -22,7 +22,7 @@ envman add --key SNOWPLOW_MICRO_COLLECTOR_RESULTS_BAD --value "$bad"
 
 if [[ $total -eq 0 ]]
 then
-  echo "There are no events posted to Snowplow Micro, text failed."
+  echo "There are no events posted to Snowplow Micro, test failed."
   exit 1
 elif [[ $bad -eq 0 ]]
 then
