@@ -33,5 +33,12 @@ else
   # Export the bad json into a file
   curl --silent "$collector_url/micro/bad" | jq '.' >> $BITRISE_DEPLOY_DIR/snowplow_bad.json
 
-  # exit 1 # Since the remote Snowplow Micro is not stable, we are not going to fail the build when there is a bad event. I will comeback to it once the server is more stable.
+  if [ "$fail_for_bad_events" = "yes" ]
+  then
+      echo "Failing step because Snowplow reports more than zero bad events ($bad)"
+      exit 1
+  else
+      echo "Found $bad events, but will not fail the step"
+      exit 0
+  fi
 fi
