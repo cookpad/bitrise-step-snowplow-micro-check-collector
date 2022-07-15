@@ -33,5 +33,12 @@ else
   # Export the bad json into a file
   curl --silent "$collector_url/micro/bad" | jq '.' >> $BITRISE_DEPLOY_DIR/snowplow_bad.json
 
-  exit 1
+  if [ "$fail_for_bad_events" = "yes" ]
+  then
+      echo "Failing step because Snowplow reports more than zero bad events ($bad)"
+      exit 1
+  else
+      echo "Found $bad events, but will not fail the step"
+      exit 0
+  fi
 fi
