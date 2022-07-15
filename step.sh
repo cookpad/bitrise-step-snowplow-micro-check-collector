@@ -33,5 +33,5 @@ else
   # Export the bad json into a file
   curl --silent "$collector_url/micro/bad" | jq '.' >> $BITRISE_DEPLOY_DIR/snowplow_bad.json
 
-  # exit 1 # Since Remote Snowplow Micro is not stable, we are not going to failed the build when there is bad event. Will comeback to it once it is stable
+  # exit 1 # Since the remote Snowplow Micro is not stable, we are not going to fail the build when there is a bad event. I will comeback to it once the server is more stable.
 fi
