@@ -2,7 +2,7 @@
 
 # Helper for finishing and exiting.
 #   $0 - A summary message to be printed and exported
-#   $1 - The script exit code. Defaults to 0, will be overwritten if $fail_for_bad_events is set to 'no'
+#   $1 - The script exit code. Defaults to 0, will be overwritten if $fail_on_error is set to 'no'
 finish () {
   summary="$1"
   exit_code="$2"
@@ -10,8 +10,8 @@ finish () {
   # Set the summary as an output for use in future steps
   envman add --key SNOWPLOW_MICRO_COLLECTOR_SUMMARY --value "$summary"
 
-  # Downgrade any errors if fail_for_bad_events is turned off
-  if [ "$fail_for_bad_events" = "no" ]
+  # Downgrade any errors if fail_on_error is turned off
+  if [ "$fail_on_error" = "no" ]
   then
     unset exit_code
   fi

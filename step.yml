@@ -70,9 +70,9 @@ inputs:
       summary: The URL to the Snowplow Micro Collector instance
       is_expand: true
       is_required: true
-  - fail_for_bad_events: "no"
+  - fail_on_error: "no"
     opts:
-      title: Fail the step if there are more than zero bad events
+      title: Fail the step if it is unable to check the results or if there are bad events
       value_options:
       - "yes"
       - "no"
