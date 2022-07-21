@@ -60,6 +60,6 @@ then
   finish "$summary" 0
 else
   echo "The collector reported $bad bad events, exporting details to snowplow_bad.json."
-  curl --silent "$collector_url/micro/bad" | jq '.' >> $BITRISE_DEPLOY_DIR/snowplow_bad.json
+  curl --silent "$collector_url/micro/bad" | jq '.' >> "$BITRISE_DEPLOY_DIR/snowplow_bad.json"
   finish "$summary" 1
 fi
