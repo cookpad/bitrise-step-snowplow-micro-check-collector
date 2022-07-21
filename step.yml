@@ -90,3 +90,7 @@ outputs:
     opts:
       title: "Good events count"
       summary: Snowplow collector has validated this amount of good events
+  - SNOWPLOW_MICRO_COLLECTOR_SUMMARY:
+    opts:
+      title: Operation Summary
+      summary: A message that can be used to give a summary of the step
